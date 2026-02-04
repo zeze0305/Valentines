@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine 💖</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #ffdce5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 700px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            position: relative;
+            height: 100px;
+            right: 100px !important;
+        }
+
+        button {
+            padding: 22px 45px;
+            border-radius: 30px;
+            font-size: 32px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #yesBtn {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background: #e0e0e0;
+            position: absolute;
+            left: 500px;
+            top: 0;
+        }
+
+        #yay {
+            display: none;
+        }
+    .emoji {
+            font-size: 64px;
+            margin-bottom: 10px;}
+    
+#yay {
+    display: none;
+    animation: popIn 0.5s ease forwards;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 📱 Mobile optimizations (iPhone 15 & similar) */
+@media (max-width: 430px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 24px;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .emoji {
+        font-size: 48px;
+    }
+
+    .buttons {
+        height: 120px;
+    }
+
+    button {
+        font-size: 22px;
+        padding: 14px 28px;
+    }
+
+    #noBtn {
+        left: 160px;
+        top: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+    <div class="emoji">😽💖</div>
+    <h1>My Dearest Melbear </h1>
+    <h1>Will you be my valentine?</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<div class="card" id="yay">
+    <div class="emoji">🥳💘🍆🥂</div>
+    <h1>OH YEA POOKIE BABYYYYY</h1>
+    <h1>!!!YAYYY!!!</h1>
+    <img 
+        src="https://i.pinimg.com/originals/bd/b5/1e/bdb51e146bb19c7e9084e1bc2cc86554.gif"
+        alt="celebration"
+        style="width:100%; border-radius:15px; margin-top:20px;"
+    >
+</div>
+
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const card = document.getElementById("card");
+    const yay = document.getElementById("yay");
+
+    function moveNo() {
+        const cardRect = card.getBoundingClientRect();
+        const btnRect = noBtn.getBoundingClientRect();
+
+        const maxX = cardRect.width - btnRect.width;
+        const maxY = cardRect.height - btnRect.height;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+    }
+
+    // Desktop
+noBtn.addEventListener("mouseenter", moveNo);
+
+// Mobile
+noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moveNo();
+});
+
+// BONUS: finger gets close, No panics
+noBtn.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    moveNo();
+});
+
+noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    moveNo();
+});
+
+
+    yesBtn.addEventListener("click", () => {
+        card.style.display = "none";
+        yay.style.display = "block";
+    });
+</script>
+
+</body>
+</html>
